@@ -6,6 +6,12 @@ if (!container) {
     throw new Error(`Element graph-container not found`);
 }
 
+const width = 500;
+const height = 500;
+
+container.style.width = `${width}`;
+container.style.height = `${height}`;
+
 InternalEvent.disableContextMenu(container);
 
 const graph = new Graph(container);
@@ -16,30 +22,38 @@ graph.batchUpdate(() => {
     graph.cellsLocked = true;
     graph.cellsSelectable = false;
 
-    const vertex01 = graph.insertVertex({
+    const a = graph.insertVertex({
         parent,
         position: [10, 10],
         size: [100, 100],
-        value: 'rectangle',
+        value: 'a',
     });
 
-    const vertex02 = graph.insertVertex({
+    const b = graph.insertVertex({
         parent,
-        position: [350, 90],
-        size: [50, 50],
-        style: {
-            fillColor: 'orange',
-            shape: 'ellipse',
-            verticalAlign: 'top',
-            verticalLabelPosition: 'bottom',
-        },
-        value: 'ellipse',
+        position: [10, 10],
+        size: [100, 100],
+        value: 'b',
+    });
+
+    const c = graph.insertVertex({
+        parent,
+        position: [10, 10],
+        size: [100, 100],
+        value: 'c',
+    });
+
+    const d = graph.insertVertex({
+        parent,
+        position: [10, 10],
+        size: [100, 100],
+        value: 'd',
     });
 
     graph.insertEdge({
         parent,
-        source: vertex01,
-        target: vertex02,
+        source: a,
+        target: b,
         value: 'edge',
         style: {
             edgeStyle: 'orthogonalEdgeStyle',
