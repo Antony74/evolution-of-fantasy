@@ -3,14 +3,18 @@
     "version": "1.0.0",
     "scripts": {
         "prettier": "npx prettier --write .",
-        "start": "parcel src/index.html"
+        "start": "parcel build src/index.html && http-server dist"
     },
     "author": "Antony74",
     "license": "MIT",
     "dependencies": {
         "@maxgraph/core": "^0.16.0",
         "@prettier/plugin-xml": "^3.4.1",
+        "http-server": "^14.1.1",
         "parcel": "^2.14.4",
         "prettier": "^3.5.3"
+    },
+    "devDependencies": {
+        "parcel-reporter-static-files-copy": "^1.5.3"
     }
 }

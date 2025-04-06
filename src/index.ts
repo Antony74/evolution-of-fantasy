@@ -40,7 +40,6 @@ graph.batchUpdate(() => {
     const vertexCommon: VertexParameters = {
         parent,
         size: [140, 140],
-        style: { verticalAlign: 'middle' },
     };
 
     const a = graph.insertVertex(
@@ -71,9 +70,18 @@ graph.batchUpdate(() => {
         centerCoords({
             ...vertexCommon,
             position: [xCenter, bottom],
-            value: `The Black Company`,
+            style: {
+                image: 'The_Black_Company.jpg',
+                shape: 'image',
+            },
         }),
     );
+
+    // graph.insertVertex({
+    //     parent: d,
+    //     value: `The Black Company`,
+    //     // position:[xCenter, bottom],
+    // });
 
     const edgeStyle: CellStyle = {
         edgeStyle: 'orthogonalEdgeStyle',
