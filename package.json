@@ -9,6 +9,7 @@
     "license": "MIT",
     "dependencies": {
         "@maxgraph/core": "^0.16.0",
+        "@prettier/plugin-xml": "^3.4.1",
         "parcel": "^2.14.4",
         "prettier": "^3.5.3"
     }
