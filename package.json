@@ -1,19 +1,15 @@
 {
-    "name": "evolution-of-fantasy-genre",
+    "name": "evolution-of-fantasy",
     "version": "1.0.0",
-    "main": "index.js",
     "scripts": {
-        "prettier": "npx prettier --write arrows.svg",
-        "start": "ts-node src/arrows.ts"
+        "prettier": "npx prettier --write .",
+        "start": "parcel src/index.html"
     },
+    "author": "Antony74",
     "license": "MIT",
-    "devDependencies": {
-        "@prettier/plugin-xml": "^3.4.1",
-        "@types/node": "^22.13.9",
-        "prettier": "^3.5.3"
-    },
     "dependencies": {
-        "ts-node": "^10.9.2",
-        "typescript": "^5.8.2"
+        "@maxgraph/core": "^0.16.0",
+        "parcel": "^2.14.4",
+        "prettier": "^3.5.3"
     }
 }
