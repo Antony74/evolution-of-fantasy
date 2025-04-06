@@ -4,7 +4,7 @@ import {
     InternalEvent,
     VertexParameters,
 } from '@maxgraph/core';
-import { centerCoords } from './utils';
+import { centerCoords, Vec2 } from './utils';
 
 const container = document.getElementById('graph-container');
 
@@ -37,51 +37,50 @@ graph.batchUpdate(() => {
     graph.cellsLocked = true;
     graph.cellsSelectable = false;
 
-    const vertexCommon: VertexParameters = {
+    const vertexCommon: VertexParameters & { size: Vec2 } = {
         parent,
         size: [140, 140],
     };
 
-    const a = graph.insertVertex(
-        centerCoords({
-            ...vertexCommon,
-            position: [xCenter, top],
-            value: [`The King of`, `Elfland's Daughter`].join('\n'),
-        }),
-    );
+    const aParams = centerCoords({
+        ...vertexCommon,
+        position: [xCenter, top],
+        value: [`The King of`, `Elfland's Daughter`].join('\n'),
+    });
 
-    const b = graph.insertVertex(
-        centerCoords({
-            ...vertexCommon,
-            position: [left, yCenter + yOffset],
-            value: `The Lord of the Rings`,
-        }),
-    );
+    const bParams = centerCoords({
+        ...vertexCommon,
+        position: [left, yCenter + yOffset],
+        value: `The Lord of the Rings`,
+    });
 
-    const c = graph.insertVertex(
-        centerCoords({
-            ...vertexCommon,
-            position: [right, yCenter - yOffset],
-            value: `The Shadow Kingdom`,
-        }),
-    );
+    const cParams = centerCoords({
+        ...vertexCommon,
+        position: [right, yCenter - yOffset],
+        value: `The Shadow Kingdom`,
+    });
 
-    const d = graph.insertVertex(
-        centerCoords({
-            ...vertexCommon,
-            position: [xCenter, bottom],
-            style: {
-                image: 'The_Black_Company.jpg',
-                shape: 'image',
-            },
-        }),
-    );
+    const dParams = centerCoords({
+        ...vertexCommon,
+        position: [xCenter, bottom],
+        style: {
+            image: 'The_Black_Company.jpg',
+            shape: 'image',
+        },
+    });
 
-    // graph.insertVertex({
-    //     parent: d,
-    //     value: `The Black Company`,
-    //     // position:[xCenter, bottom],
-    // });
+    const a = graph.insertVertex(aParams);
+    const b = graph.insertVertex(bParams);
+    const c = graph.insertVertex(cParams);
+    const d = graph.insertVertex(dParams);
+
+    graph.insertVertex({
+        parent,
+        value: [`Glen Cook, 1984`, `Became known as Grimdark`].join('\n'),
+        position: [dParams.position[0], dParams.position[1] + dParams.size[1]],
+        size: [140, 25],
+        style: { fillOpacity: 0, strokeOpacity: 0, fontColor: 'black' },
+    });
 
     const edgeStyle: CellStyle = {
         edgeStyle: 'orthogonalEdgeStyle',
