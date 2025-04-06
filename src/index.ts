@@ -1,5 +1,5 @@
 import {
-    EdgeParameters,
+    CellStyle,
     Graph,
     InternalEvent,
     VertexParameters,
@@ -24,10 +24,10 @@ const graph = new Graph(container);
 
 const parent = graph.getDefaultParent();
 
-const margin = 80;
+const margin = 90;
 const yCenter = width / 2;
 const xCenter = height / 2;
-const yOffset = 10;
+const yOffset = 20;
 const top = margin;
 const bottom = height - margin;
 const left = margin;
@@ -39,7 +39,7 @@ graph.batchUpdate(() => {
 
     const vertexCommon: VertexParameters = {
         parent,
-        size: [100, 100],
+        size: [140, 140],
         style: { verticalAlign: 'middle' },
     };
 
@@ -47,23 +47,23 @@ graph.batchUpdate(() => {
         centerCoords({
             ...vertexCommon,
             position: [xCenter, top],
-            value: 'a',
+            value: [`The King of`, `Elfland's Daughter`].join('\n'),
         }),
     );
 
     const b = graph.insertVertex(
         centerCoords({
             ...vertexCommon,
-            position: [left, yCenter],
-            value: 'b',
+            position: [left, yCenter + yOffset],
+            value: `The Lord of the Rings`,
         }),
     );
 
     const c = graph.insertVertex(
         centerCoords({
             ...vertexCommon,
-            position: [right, yCenter],
-            value: 'c',
+            position: [right, yCenter - yOffset],
+            value: `The Shadow Kingdom`,
         }),
     );
 
@@ -71,39 +71,42 @@ graph.batchUpdate(() => {
         centerCoords({
             ...vertexCommon,
             position: [xCenter, bottom],
-            value: 'd',
+            value: `The Black Company`,
         }),
     );
 
-    const edgeCommon: EdgeParameters = {
-        parent,
-        style: {
-            edgeStyle: 'orthogonalEdgeStyle',
-            rounded: true,
-        },
+    const edgeStyle: CellStyle = {
+        edgeStyle: 'orthogonalEdgeStyle',
+        rounded: true,
+        strokeWidth: 10,
+        strokeColor: 'black',
     };
 
     graph.insertEdge({
-        ...edgeCommon,
+        parent,
         source: a,
         target: b,
+        style: { ...edgeStyle },
     });
 
     graph.insertEdge({
-        ...edgeCommon,
+        parent,
         source: a,
         target: c,
+        style: { ...edgeStyle, targetPortConstraint: 'north' as any },
     });
 
     graph.insertEdge({
-        ...edgeCommon,
+        parent,
         source: b,
         target: d,
+        style: { ...edgeStyle, sourcePortConstraint: 'south' as any },
     });
 
     graph.insertEdge({
-        ...edgeCommon,
+        parent,
         source: c,
         target: d,
+        style: { ...edgeStyle, sourcePortConstraint: 'south' as any },
     });
 });
