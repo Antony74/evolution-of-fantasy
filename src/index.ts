@@ -80,6 +80,8 @@ graph.batchUpdate(() => {
         rounded: true,
         strokeWidth: 10,
         strokeColor: 'black',
+        arcSize: 50,
+        endArrow: 'block',
     };
 
     graph.insertEdge({
