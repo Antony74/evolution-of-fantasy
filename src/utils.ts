@@ -15,6 +15,10 @@ export type VertexParametersWithCoords = VertexParameters & {
     position: Vec2;
 };
 
+export type VertexParametersWithSize = VertexParameters & {
+    size: Vec2;
+};
+
 export const centerCoords = (
     params: VertexParametersWithCoords,
 ): VertexParametersWithCoords => {
@@ -23,4 +27,14 @@ export const centerCoords = (
         ...params,
         position: vecSub(params.position, vecDiv(params.size, 2)),
     };
+};
+
+export const below = ({
+    position,
+    size,
+}: {
+    position: Vec2;
+    size: Vec2;
+}): Vec2 => {
+    return [position[0], position[1] + size[1]];
 };
