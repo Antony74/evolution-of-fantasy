@@ -12,8 +12,8 @@ if (!container) {
     throw new Error(`Element graph-container not found`);
 }
 
-const width = 500;
-const height = 500;
+const width = 480;
+const height = 600;
 
 container.style.width = `${width}`;
 container.style.height = `${height}`;
@@ -24,15 +24,17 @@ const graph = new Graph(container);
 
 const parent = graph.getDefaultParent();
 
+const labelHeight = 40;
 const margin = 90;
-const yCenter = width / 2;
-const xCenter = height / 2;
 const yOffset = 20;
 const top = margin;
-const bottom = height - margin;
+const bottom = height - margin - labelHeight;
 const left = margin;
 const right = width - margin;
-const vertexWidth = 140;
+const xCenter = width / 2;
+const yCenter = (top + bottom) / 2;
+const vertexHeight = 140;
+const vertexWidth = 0.65 * vertexHeight;
 
 graph.batchUpdate(() => {
     graph.cellsLocked = true;
@@ -40,7 +42,7 @@ graph.batchUpdate(() => {
 
     const vertexCommon: VertexParametersWithSize = {
         parent,
-        size: [vertexWidth, vertexWidth],
+        size: [vertexWidth, vertexHeight],
     };
 
     const aParams = centerCoords({
@@ -64,6 +66,7 @@ graph.batchUpdate(() => {
     const cParams = centerCoords({
         ...vertexCommon,
         position: [right, yCenter - yOffset],
+        size: [vertexHeight, vertexHeight * 0.65],
         style: {
             image: 'TheShadowKingdom-1.png',
             shape: 'image',
@@ -87,7 +90,7 @@ graph.batchUpdate(() => {
 
     const labelVertexCommon: VertexParameters = {
         parent,
-        size: [vertexWidth, 25],
+        size: [vertexWidth, labelHeight],
         style: {
             fillOpacity: 0,
             strokeOpacity: 0,
@@ -98,31 +101,32 @@ graph.batchUpdate(() => {
 
     graph.insertVertex({
         ...labelVertexCommon,
-        value: [`Lord Dunsany, 1924`].join('\n'),
+        value: [`Lord Dunsany, 1924.`].join('\n'),
         position: below(aParams),
     });
 
-    graph.insertVertex({
+    const bLabel = graph.insertVertex({
         ...labelVertexCommon,
-        value: [`JRR Tolkien, 1954-5`, `Became known as`, `High Fantasy`].join(
+        value: [`JRR Tolkien, 1954-5.`, `Became known as`, `High Fantasy.`].join(
             '\n',
         ),
         position: below(bParams),
     });
 
-    graph.insertVertex({
+    const cLabel = graph.insertVertex({
         ...labelVertexCommon,
+        size: [vertexHeight, labelHeight],
         value: [
-            `Robert E Howard, 1929`,
+            `Robert E Howard, 1929.`,
             `Became known as`,
-            `Sword and Sorcery`,
+            `Sword and Sorcery.`,
         ].join('\n'),
         position: below(cParams),
     });
 
     graph.insertVertex({
         ...labelVertexCommon,
-        value: [`Glen Cook, 1984`, `Became known`, `as Grimdark`].join('\n'),
+        value: [`Glen Cook, 1984.`, `Became known`, `as Grimdark.`].join('\n'),
         position: below(dParams),
     });
 
@@ -151,14 +155,14 @@ graph.batchUpdate(() => {
 
     graph.insertEdge({
         parent,
-        source: b,
+        source: bLabel,
         target: d,
         style: { ...edgeStyle, sourcePortConstraint: 'south' as any },
     });
 
     graph.insertEdge({
         parent,
-        source: c,
+        source: cLabel,
         target: d,
         style: { ...edgeStyle, sourcePortConstraint: 'south' as any },
     });
