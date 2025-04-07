@@ -25,15 +25,16 @@ const graph = new Graph(container);
 const parent = graph.getDefaultParent();
 
 const labelHeight = 40;
-const margin = 90;
-const yOffset = 20;
+const margin = 110;
+
 const top = margin;
 const bottom = height - margin - labelHeight;
-const left = margin;
+const left = margin - 20;
 const right = width - margin;
+
 const xCenter = width / 2;
 const yCenter = (top + bottom) / 2;
-const vertexHeight = 140;
+const vertexHeight = 200;
 const vertexWidth = 0.65 * vertexHeight;
 
 graph.batchUpdate(() => {
@@ -56,7 +57,7 @@ graph.batchUpdate(() => {
 
     const bParams = centerCoords({
         ...vertexCommon,
-        position: [left, yCenter + yOffset],
+        position: [left, yCenter + 20],
         style: {
             image: 'The_Lord_of_the_Rings.gif',
             shape: 'image',
@@ -65,7 +66,7 @@ graph.batchUpdate(() => {
 
     const cParams = centerCoords({
         ...vertexCommon,
-        position: [right, yCenter - yOffset],
+        position: [right, yCenter],
         size: [vertexHeight, vertexHeight * 0.65],
         style: {
             image: 'TheShadowKingdom-1.png',
@@ -107,9 +108,11 @@ graph.batchUpdate(() => {
 
     const bLabel = graph.insertVertex({
         ...labelVertexCommon,
-        value: [`JRR Tolkien, 1954-5.`, `Became known as`, `High Fantasy.`].join(
-            '\n',
-        ),
+        value: [
+            `JRR Tolkien, 1954-5.`,
+            `Became known as`,
+            `High Fantasy.`,
+        ].join('\n'),
         position: below(bParams),
     });
 
@@ -139,31 +142,52 @@ graph.batchUpdate(() => {
         endArrow: 'block',
     };
 
+    const north = 'north' as any;
+    const east = 'east' as any;
+    const south = 'south' as any;
+    const west = 'west' as any;
+
     graph.insertEdge({
         parent,
         source: a,
         target: b,
-        style: { ...edgeStyle },
+        style: {
+            ...edgeStyle,
+            sourcePortConstraint: west,
+            targetPortConstraint: north,
+        },
     });
 
     graph.insertEdge({
         parent,
         source: a,
         target: c,
-        style: { ...edgeStyle, targetPortConstraint: 'north' as any },
+        style: {
+            ...edgeStyle,
+            sourcePortConstraint: east,
+            targetPortConstraint: north,
+        },
     });
 
     graph.insertEdge({
         parent,
         source: bLabel,
         target: d,
-        style: { ...edgeStyle, sourcePortConstraint: 'south' as any },
+        style: {
+            ...edgeStyle,
+            sourcePortConstraint: south,
+            targetPortConstraint: west,
+        },
     });
 
     graph.insertEdge({
         parent,
         source: cLabel,
         target: d,
-        style: { ...edgeStyle, sourcePortConstraint: 'south' as any },
+        style: {
+            ...edgeStyle,
+            sourcePortConstraint: south,
+            targetPortConstraint: east,
+        },
     });
 });
