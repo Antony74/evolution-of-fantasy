@@ -24,17 +24,17 @@ const graph = new Graph(container);
 
 const parent = graph.getDefaultParent();
 
-const labelHeight = 40;
+const labelHeight = 55;
 const margin = 110;
 
-const top = margin;
-const bottom = height - margin - labelHeight;
-const left = margin - 20;
-const right = width - margin;
+const top = margin - 5;
+const bottom = height - margin - labelHeight + 10;
+const left = margin - 35;
+const right = width - margin + 10;
 
 const xCenter = width / 2;
 const yCenter = (top + bottom) / 2;
-const vertexHeight = 200;
+const vertexHeight = 180;
 const vertexWidth = 0.65 * vertexHeight;
 
 graph.batchUpdate(() => {
@@ -66,7 +66,7 @@ graph.batchUpdate(() => {
 
     const cParams = centerCoords({
         ...vertexCommon,
-        position: [right, yCenter],
+        position: [right, yCenter + 10],
         size: [vertexHeight, vertexHeight * 0.65],
         style: {
             image: 'TheShadowKingdom-1.png',
@@ -78,6 +78,7 @@ graph.batchUpdate(() => {
     const dParams = centerCoords({
         ...vertexCommon,
         position: [xCenter, bottom],
+        size: [0.6 * vertexHeight, vertexHeight],
         style: {
             image: 'The_Black_Company.jpg',
             shape: 'image',
@@ -97,6 +98,7 @@ graph.batchUpdate(() => {
             strokeOpacity: 0,
             fontColor: 'black',
             verticalAlign: 'top',
+            fontSize: 14,
         },
     };
 
