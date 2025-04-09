@@ -5,6 +5,7 @@ import {
     VertexParameters,
 } from '@maxgraph/core';
 import { below, centerCoords, VertexParametersWithSize } from './utils';
+import { getPrettyXml } from '@maxgraph/core/lib/util/xmlUtils';
 
 const container = document.getElementById('graph-container');
 
@@ -192,4 +193,45 @@ graph.batchUpdate(() => {
             targetPortConstraint: east,
         },
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('download-button');
+
+    if (button) {
+        button.addEventListener('click', () => {
+            const orig = container.innerHTML;
+
+            document.querySelectorAll('image').forEach((image) => {
+                const url = new URL(image.getAttribute('xlink:href') ?? '');
+                const newUrl = `./static${url.pathname}`;
+                image.setAttribute('xlink:href', newUrl);
+            });
+
+            const svg = container.firstElementChild!;
+
+            svg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+
+            const xml = [
+                `<?xml version="1.0" standalone="no"?>`,
+                `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`,
+                getPrettyXml(container.firstElementChild),
+            ].join('\n');
+
+            const blob = new Blob([xml], {
+                type: 'image/svg+xml',
+            });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'evolution-of-fantasy.svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            URL.revokeObjectURL(url);
+            container.innerHTML = orig;
+        });
+    }
 });

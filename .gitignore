@@ -1,5 +1,3 @@
 node_modules
-*.svg
-*.webp
 dist
 .parcel-cache
