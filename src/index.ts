@@ -6,6 +6,7 @@ import {
 } from '@maxgraph/core';
 import { below, centerCoords, VertexParametersWithSize } from './utils';
 import { getPrettyXml } from '@maxgraph/core/lib/util/xmlUtils';
+import { maxGraphToSvg } from './maxGraphToSvg';
 
 const container = document.getElementById('graph-container');
 
@@ -200,23 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (button) {
         button.addEventListener('click', () => {
-            const orig = container.innerHTML;
-
-            document.querySelectorAll('image').forEach((image) => {
-                const url = new URL(image.getAttribute('xlink:href') ?? '');
-                const newUrl = `./static${url.pathname}`;
-                image.setAttribute('xlink:href', newUrl);
-            });
-
-            const svg = container.firstElementChild!;
-
-            svg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
-
-            const xml = [
-                `<?xml version="1.0" standalone="no"?>`,
-                `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`,
-                getPrettyXml(container.firstElementChild),
-            ].join('\n');
+            const xml = maxGraphToSvg(graph);
 
             const blob = new Blob([xml], {
                 type: 'image/svg+xml',
@@ -231,7 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.removeChild(a);
 
             URL.revokeObjectURL(url);
-            container.innerHTML = orig;
         });
     }
 });
