@@ -5,7 +5,6 @@ import {
     VertexParameters,
 } from '@maxgraph/core';
 import { below, centerCoords, VertexParametersWithSize } from './utils';
-import { getPrettyXml } from '@maxgraph/core/lib/util/xmlUtils';
 import { maxGraphToSvg } from './maxGraphToSvg';
 
 const container = document.getElementById('graph-container');
