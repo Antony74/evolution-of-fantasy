@@ -14,6 +14,7 @@ export const maxGraphToSvg = async (graph: Graph): Promise<string> => {
 
     const svg = container.firstElementChild!;
 
+    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
 
     const xml = [
