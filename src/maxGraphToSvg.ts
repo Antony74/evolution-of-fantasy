@@ -1,7 +1,7 @@
 import { Graph } from '@maxgraph/core';
-import { getPrettyXml } from '@maxgraph/core/lib/util/xmlUtils';
+import prettier from 'prettier';
 
-export const maxGraphToSvg = (graph: Graph): string => {
+export const maxGraphToSvg = async (graph: Graph): Promise<string> => {
     const container = graph.container;
 
     const orig = container.innerHTML;
@@ -19,10 +19,15 @@ export const maxGraphToSvg = (graph: Graph): string => {
     const xml = [
         `<?xml version="1.0" standalone="no"?>`,
         `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`,
-        getPrettyXml(container.firstElementChild),
+        container.innerHTML,
     ].join('\n');
 
     container.innerHTML = orig;
 
-    return xml;
+    return prettier.format(xml, {
+        plugins: ['@prettier/plugin-xml'],
+        parser: 'xml',
+        tabWidth: 4,
+        singleQuote: true,
+    });
 };

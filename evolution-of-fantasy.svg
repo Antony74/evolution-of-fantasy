@@ -4,38 +4,25 @@
 <svg
     style="left: 0px; top: 0px; width: 100%; height: 100%; display: block; min-width: 471px; min-height: 591px;"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns="http://www.w3.org/2000/svg"
->
-  <g>
-    <g />
-    <g>
-      <g style="visibility: visible;">
-        <image
+><g><g /><g><g style="visibility: visible;"><image
                     x="181.5"
                     y="15"
                     width="117"
                     height="180"
-                    xlink:href="./static/TheKingOfElflandsDaughter.jpg"
-                />
-      </g>
-      <g style="visibility: visible;">
-        <image
+                    xlink:href="./static"
+                /></g><g style="visibility: visible;"><image
                     x="16.5"
                     y="205"
                     width="117"
                     height="180"
-                    xlink:href="./static/The_Lord_of_the_Rings.gif"
-                />
-      </g>
-      <g style="visibility: visible;">
-        <image
+                    xlink:href="./static"
+                /></g><g style="visibility: visible;"><image
                     x="290"
                     y="226.5"
                     width="180"
                     height="117"
-                    xlink:href="./static/TheShadowKingdom-1.png"
-                />
-        <rect
+                    xlink:href="./static"
+                /><rect
                     x="290"
                     y="226.5"
                     width="180"
@@ -45,8 +32,7 @@
                     pointer-events="stroke"
                     visibility="hidden"
                     stroke-width="9"
-                />
-        <rect
+                /><rect
                     x="290"
                     y="226.5"
                     width="180"
@@ -54,19 +40,16 @@
                     fill="none"
                     stroke="black"
                     pointer-events="all"
-                />
-      </g>
-      <g style="visibility: visible;">
-        <image
+                /></g><g style="visibility: visible;"><image
                     x="186"
                     y="355"
                     width="108"
                     height="180"
-                    xlink:href="./static/The_Black_Company.jpg"
-                />
-      </g>
-      <g transform="translate(0.5,0.5)" style="visibility: visible;">
-        <rect
+                    xlink:href="./static"
+                /></g><g
+                style="visibility: visible;"
+                transform="translate(0.5,0.5)"
+            ><rect
                     x="181.5"
                     y="195"
                     width="117"
@@ -76,33 +59,25 @@
                     stroke="#6482b9"
                     stroke-opacity="0"
                     pointer-events="all"
-                />
-      </g>
-      <g style="">
-        <g
+                /></g><g style=""><g
                     fill="black"
                     font-family="Arial,Helvetica"
                     direction=""
                     text-anchor="middle"
                     font-size="14px"
-                >
-          <rect
+                ><rect
                         fill="none"
                         stroke="none"
-                        x="174"
-                        y="197"
-                        width="131"
-                        height="16"
+                        x="240"
+                        y="198"
+                        width="2"
+                        height="1"
                         stroke-width="1"
                         transform="translate(0.5, 0.5)"
-                    />
-          <text x="240" y="210">
-            Lord Dunsany, 1924.
-          </text>
-        </g>
-      </g>
-      <g transform="translate(0.5,0.5)" style="visibility: visible;">
-        <rect
+                    /><text x="240" y="210">Lord Dunsany, 1924.</text></g></g><g
+                style="visibility: visible;"
+                transform="translate(0.5,0.5)"
+            ><rect
                     x="16.5"
                     y="385"
                     width="117"
@@ -112,39 +87,31 @@
                     stroke="#6482b9"
                     stroke-opacity="0"
                     pointer-events="all"
-                />
-      </g>
-      <g style="">
-        <g
+                /></g><g style=""><g
                     fill="black"
                     font-family="Arial,Helvetica"
                     direction=""
                     text-anchor="middle"
                     font-size="14px"
-                >
-          <rect
+                ><rect
                         fill="none"
                         stroke="none"
-                        x="9"
-                        y="387"
-                        width="132"
-                        height="50"
+                        x="75"
+                        y="388"
+                        width="2"
+                        height="1"
                         stroke-width="1"
                         transform="translate(0.5, 0.5)"
-                    />
-          <text x="75" y="400">
-            JRR Tolkien, 1954-5.
-          </text>
-          <text x="75" y="417">
-            Became known as
-          </text>
-          <text x="75" y="434">
-            High Fantasy.
-          </text>
-        </g>
-      </g>
-      <g transform="translate(0.5,0.5)" style="visibility: visible;">
-        <rect
+                    /><text x="75" y="400">JRR Tolkien, 1954-5.</text><text
+                        x="75"
+                        y="417"
+                    >Became known as</text><text
+                        x="75"
+                        y="434"
+                    >High Fantasy.</text></g></g><g
+                style="visibility: visible;"
+                transform="translate(0.5,0.5)"
+            ><rect
                     x="290"
                     y="343.5"
                     width="180"
@@ -154,39 +121,31 @@
                     stroke="#6482b9"
                     stroke-opacity="0"
                     pointer-events="all"
-                />
-      </g>
-      <g style="">
-        <g
+                /></g><g style=""><g
                     fill="black"
                     font-family="Arial,Helvetica"
                     direction=""
                     text-anchor="middle"
                     font-size="14px"
-                >
-          <rect
+                ><rect
                         fill="none"
                         stroke="none"
-                        x="303"
-                        y="345"
-                        width="153"
-                        height="50"
+                        x="380"
+                        y="346"
+                        width="2"
+                        height="1"
                         stroke-width="1"
                         transform="translate(0.5, 0.5)"
-                    />
-          <text x="380" y="358.5">
-            Robert E Howard, 1929.
-          </text>
-          <text x="380" y="375.5">
-            Became known as
-          </text>
-          <text x="380" y="392.5">
-            Sword and Sorcery.
-          </text>
-        </g>
-      </g>
-      <g transform="translate(0.5,0.5)" style="visibility: visible;">
-        <rect
+                    /><text x="380" y="358.5">Robert E Howard, 1929.</text><text
+                        x="380"
+                        y="375.5"
+                    >Became known as</text><text
+                        x="380"
+                        y="392.5"
+                    >Sword and Sorcery.</text></g></g><g
+                style="visibility: visible;"
+                transform="translate(0.5,0.5)"
+            ><rect
                     x="186"
                     y="535"
                     width="117"
@@ -196,39 +155,30 @@
                     stroke="#6482b9"
                     stroke-opacity="0"
                     pointer-events="all"
-                />
-      </g>
-      <g style="">
-        <g
+                /></g><g style=""><g
                     fill="black"
                     font-family="Arial,Helvetica"
                     direction=""
                     text-anchor="middle"
                     font-size="14px"
-                >
-          <rect
+                ><rect
                         fill="none"
                         stroke="none"
-                        x="189"
-                        y="537"
-                        width="111"
-                        height="50"
+                        x="244"
+                        y="538"
+                        width="2"
+                        height="1"
                         stroke-width="1"
                         transform="translate(0.5, 0.5)"
-                    />
-          <text x="244.5" y="550">
-            Glen Cook, 1984.
-          </text>
-          <text x="244.5" y="567">
-            Became known
-          </text>
-          <text x="244.5" y="584">
-            as Grimdark.
-          </text>
-        </g>
-      </g>
-      <g style="visibility: visible;">
-        <path
+                    /><text x="244.5" y="550">Glen Cook, 1984.</text><text
+                        x="244.5"
+                        y="567"
+                    >Became known</text><text
+                        x="244.5"
+                        y="584"
+                    >as Grimdark.</text></g></g><g
+                style="visibility: visible;"
+            ><path
                     d="M 181.5 105 L 125 105 Q 75 105 75 141.41 L 75 177.82"
                     fill="none"
                     stroke="white"
@@ -236,26 +186,21 @@
                     stroke-miterlimit="10"
                     pointer-events="stroke"
                     visibility="hidden"
-                />
-        <path
+                /><path
                     d="M 181.5 105 L 125 105 Q 75 105 75 141.41 L 75 177.82"
                     fill="none"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="stroke"
-                />
-        <path
+                /><path
                     d="M 75 193.82 L 67 177.82 L 83 177.82 Z"
                     fill="black"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="all"
-                />
-      </g>
-      <g style="visibility: visible;">
-        <path
+                /></g><g style="visibility: visible;"><path
                     d="M 298.5 105 L 339.25 105 Q 380 105 380 152.16 L 380 199.32"
                     fill="none"
                     stroke="white"
@@ -263,26 +208,21 @@
                     stroke-miterlimit="10"
                     pointer-events="stroke"
                     visibility="hidden"
-                />
-        <path
+                /><path
                     d="M 298.5 105 L 339.25 105 Q 380 105 380 152.16 L 380 199.32"
                     fill="none"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="stroke"
-                />
-        <path
+                /><path
                     d="M 380 215.32 L 372 199.32 L 388 199.32 Z"
                     fill="black"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="all"
-                />
-      </g>
-      <g style="visibility: visible;">
-        <path
+                /></g><g style="visibility: visible;"><path
                     d="M 75 440 L 75 445 Q 75 450 117.4 450 L 138.6 450 Q 159.8 450 159.8 447.5 L 159.8 446.25 Q 159.8 445 159.31 445 L 158.82 445"
                     fill="none"
                     stroke="white"
@@ -290,26 +230,21 @@
                     stroke-miterlimit="10"
                     pointer-events="stroke"
                     visibility="hidden"
-                />
-        <path
+                /><path
                     d="M 75 440 L 75 445 Q 75 450 117.4 450 L 138.6 450 Q 159.8 450 159.8 447.5 L 159.8 446.25 Q 159.8 445 159.31 445 L 158.82 445"
                     fill="none"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="stroke"
-                />
-        <path
+                /><path
                     d="M 174.82 445 L 158.82 453 L 158.82 437 Z"
                     fill="black"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="all"
-                />
-      </g>
-      <g style="visibility: visible;">
-        <path
+                /></g><g style="visibility: visible;"><path
                     d="M 380 398.5 L 380 421.75 Q 380 445 350.59 445 L 321.18 445"
                     fill="none"
                     stroke="white"
@@ -317,26 +252,18 @@
                     stroke-miterlimit="10"
                     pointer-events="stroke"
                     visibility="hidden"
-                />
-        <path
+                /><path
                     d="M 380 398.5 L 380 421.75 Q 380 445 350.59 445 L 321.18 445"
                     fill="none"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="stroke"
-                />
-        <path
+                /><path
                     d="M 305.18 445 L 321.18 437 L 321.18 453 Z"
                     fill="black"
                     stroke="black"
                     stroke-width="10"
                     stroke-miterlimit="10"
                     pointer-events="all"
-                />
-      </g>
-    </g>
-    <g />
-    <g />
-  </g>
-</svg>
+                /></g></g><g /><g /></g></svg>

@@ -3,19 +3,20 @@
     "version": "1.0.0",
     "scripts": {
         "prettier": "npx prettier --write .",
-        "start": "rimraf dist && parcel build src/index.html && http-server dist"
+        "start": "node build.js && node dist/index.js"
     },
     "author": "Antony74",
     "license": "MIT",
     "dependencies": {
         "@maxgraph/core": "^0.16.0",
         "@prettier/plugin-xml": "^3.4.1",
-        "http-server": "^14.1.1",
-        "parcel": "^2.14.4",
-        "prettier": "^3.5.3",
-        "rimraf": "^6.0.1"
+        "@types/jsdom-global": "^3.0.7",
+        "esbuild": "^0.25.2",
+        "jsdom": "^26.1.0",
+        "jsdom-global": "^3.0.2",
+        "prettier": "^3.5.3"
     },
     "devDependencies": {
-        "parcel-reporter-static-files-copy": "^1.5.3"
+        "@types/jsdom": "^21.1.7"
     }
 }

@@ -1,11 +1,18 @@
+import fsp from 'fs/promises';
+
+import jsdomGlobal from 'jsdom-global';
+
 import {
     CellStyle,
     Graph,
     InternalEvent,
     VertexParameters,
 } from '@maxgraph/core';
+
 import { below, centerCoords, VertexParametersWithSize } from './utils';
 import { maxGraphToSvg } from './maxGraphToSvg';
+
+jsdomGlobal(`<!DOCTYPE html><div id="graph-container"></div>`);
 
 const container = document.getElementById('graph-container');
 
@@ -195,26 +202,9 @@ graph.batchUpdate(() => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('download-button');
+const main = async () => {
+    const xml = await maxGraphToSvg(graph);
+    await fsp.writeFile('evolution-of-fantasy.svg', xml);
+};
 
-    if (button) {
-        button.addEventListener('click', () => {
-            const xml = maxGraphToSvg(graph);
-
-            const blob = new Blob([xml], {
-                type: 'image/svg+xml',
-            });
-            const url = URL.createObjectURL(blob);
-
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'evolution-of-fantasy.svg';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-
-            URL.revokeObjectURL(url);
-        });
-    }
-});
+main();
