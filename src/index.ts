@@ -54,11 +54,13 @@ graph.batchUpdate(() => {
         size: [vertexWidth, vertexHeight],
     };
 
+    const imageLocation = 'file://./static';
+
     const aParams = centerCoords({
         ...vertexCommon,
         position: [xCenter, top],
         style: {
-            image: 'TheKingOfElflandsDaughter.jpg',
+            image: `${imageLocation}/TheKingOfElflandsDaughter.jpg`,
             shape: 'image',
         },
     });
@@ -66,10 +68,10 @@ graph.batchUpdate(() => {
     const bParams = centerCoords({
         ...vertexCommon,
         position: [left, yCenter + 20],
-        style: {
-            image: 'The_Lord_of_the_Rings.gif',
-            shape: 'image',
-        },
+        // style: {
+        //     image: `${imageLocation}/The_Lord_of_the_Rings.gif`,
+        //     shape: 'image',
+        // },
     });
 
     const cParams = centerCoords({
@@ -77,7 +79,7 @@ graph.batchUpdate(() => {
         position: [right, yCenter + 10],
         size: [vertexHeight, vertexHeight * 0.65],
         style: {
-            image: 'TheShadowKingdom-1.png',
+            image: `${imageLocation}/TheShadowKingdom-1.png`,
             shape: 'image',
             imageBorder: 'black',
         },
@@ -88,7 +90,7 @@ graph.batchUpdate(() => {
         position: [xCenter, bottom],
         size: [0.6 * vertexHeight, vertexHeight],
         style: {
-            image: 'The_Black_Company.jpg',
+            image: `${imageLocation}/The_Black_Company.jpg`,
             shape: 'image',
         },
     });
@@ -203,7 +205,7 @@ graph.batchUpdate(() => {
 });
 
 const main = async () => {
-    const xml = await maxGraphToSvg(graph);
+    const xml = await maxGraphToSvg(graph, { inlineImages: true });
     await fsp.writeFile('evolution-of-fantasy.svg', xml);
 };
 

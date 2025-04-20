@@ -1,16 +1,49 @@
 import { Graph } from '@maxgraph/core';
-import prettier from 'prettier';
+import mime from 'mime-types';
+import fsp from 'fs/promises';
+import imageToBase64 from 'image-to-base64';
 
-export const maxGraphToSvg = async (graph: Graph): Promise<string> => {
+export type MaxGraphToSvgOptions = {
+    inlineImages?: boolean;
+};
+
+export const maxGraphToSvg = async (
+    graph: Graph,
+    options?: MaxGraphToSvgOptions,
+): Promise<string> => {
+    const inlineImages: boolean =
+        (options ?? { inlineImages: false }).inlineImages ?? false;
+
     const container = graph.container;
 
     const orig = container.innerHTML;
 
-    container.querySelectorAll('image').forEach((image) => {
-        const url = new URL(image.getAttribute('xlink:href') ?? '');
-        const newUrl = `./static${url.pathname}`;
-        image.setAttribute('xlink:href', newUrl);
-    });
+    if (inlineImages) {
+        const images = Array.from(container.querySelectorAll('image'));
+
+        for (const image of images) {
+            let path = image.getAttribute('xlink:href') ?? '';
+
+            let isFile = false;
+
+            try {
+                const url = new URL(path);
+                isFile = url.protocol === 'file:';
+            } catch (_e) {}
+
+            if (isFile) {
+                path = path.slice(7);
+            }
+
+            const mimeType = mime.lookup(path);
+            const contentType = mimeType ? mimeType : '';
+            const content = await imageToBase64(path);
+
+            const newUrl = `data:${contentType};base64, ${content}`;
+
+            image.setAttribute('xlink:href', newUrl);
+        }
+    }
 
     const svg = container.firstElementChild!;
 
@@ -25,10 +58,5 @@ export const maxGraphToSvg = async (graph: Graph): Promise<string> => {
 
     container.innerHTML = orig;
 
-    return prettier.format(xml, {
-        plugins: ['@prettier/plugin-xml'],
-        parser: 'xml',
-        tabWidth: 4,
-        singleQuote: true,
-    });
+    return xml;
 };
