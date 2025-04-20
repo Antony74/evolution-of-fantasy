@@ -5,6 +5,7 @@ import jsdomGlobal from 'jsdom-global';
 import { maxGraphToSvg } from './maxGraphToSvg';
 import { createEvolutionOfFantasyGraph } from './evolutionOfFantasy';
 import { Resvg } from '@resvg/resvg-js';
+import sharp from 'sharp';
 
 const main = async () => {
     jsdomGlobal(`<!DOCTYPE html><div id="graph-container"></div>`);
@@ -33,7 +34,17 @@ const main = async () => {
         background: '#ffffff',
     });
     const pngData = resvg.render().asPng();
-    await fsp.writeFile(`evolution-of-fantasy.png`, pngData);
+    await fsp.writeFile(`temp.png`, pngData);
+
+    await sharp(`temp.png`)
+        .extend({
+            left: 0,
+            top: 0,
+            right: 10,
+            bottom: 10,
+            background: { r: 255, g: 255, b: 255, alpha: 1 },
+        })
+        .toFile(`evolution-of-fantasy.png`);
 };
 
 main();
