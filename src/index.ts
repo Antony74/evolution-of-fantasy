@@ -68,10 +68,10 @@ graph.batchUpdate(() => {
     const bParams = centerCoords({
         ...vertexCommon,
         position: [left, yCenter + 20],
-        // style: {
-        //     image: `${imageLocation}/The_Lord_of_the_Rings.gif`,
-        //     shape: 'image',
-        // },
+        style: {
+            image: `${imageLocation}/The_Lord_of_the_Rings.gif`,
+            shape: 'image',
+        },
     });
 
     const cParams = centerCoords({

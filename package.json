@@ -12,14 +12,12 @@
         "@prettier/plugin-xml": "^3.4.1",
         "@types/jsdom-global": "^3.0.7",
         "esbuild": "^0.25.2",
-        "image-to-base64": "^2.2.0",
         "jsdom": "^26.1.0",
         "jsdom-global": "^3.0.2",
         "mime-types": "^3.0.1",
         "prettier": "^3.5.3"
     },
     "devDependencies": {
-        "@types/image-to-base64": "^2.1.2",
         "@types/jsdom": "^21.1.7",
         "@types/mime-types": "^2.1.4"
     }
