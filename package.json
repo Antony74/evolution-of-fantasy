@@ -9,16 +9,20 @@
     "license": "MIT",
     "dependencies": {
         "@maxgraph/core": "^0.16.0",
-        "@prettier/plugin-xml": "^3.4.1",
-        "@types/jsdom-global": "^3.0.7",
+        "@resvg/resvg-js": "^2.6.2",
         "esbuild": "^0.25.2",
         "jsdom": "^26.1.0",
         "jsdom-global": "^3.0.2",
-        "mime-types": "^3.0.1",
-        "prettier": "^3.5.3"
+        "mime-types": "^3.0.1"
     },
     "devDependencies": {
         "@types/jsdom": "^21.1.7",
-        "@types/mime-types": "^2.1.4"
+        "@types/jsdom-global": "^3.0.7",
+        "@types/mime-types": "^2.1.4",
+        "prettier": "^3.5.3"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": true
     }
 }

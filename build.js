@@ -4,5 +4,10 @@ require('esbuild').build({
     outdir: 'dist',
     treeShaking: true,
     platform: 'node',
-    external: ['canvas', 'jsdom', 'jsdom-global', 'prettier'],
+    external: [
+        'canvas',
+        'jsdom',
+        'jsdom-global',
+        '@resvg/resvg-js',
+    ],
 });
