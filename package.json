@@ -2,8 +2,11 @@
     "name": "evolution-of-fantasy",
     "version": "1.0.0",
     "scripts": {
+        "clean": "rimraf dist",
+        "run": "node dist/index.js",
+        "build": "node build.js",
         "prettier": "npx prettier --write .",
-        "start": "node build.js && node dist/index.js"
+        "start": "npm run clean && npm run build && npm run run"
     },
     "author": "Antony74",
     "license": "MIT",
@@ -21,7 +24,8 @@
         "@types/jsdom-global": "^3.0.7",
         "@types/mime-types": "^2.1.4",
         "prettier": "^3.5.3",
-        "rimraf": "^6.0.1"
+        "rimraf": "^6.0.1",
+        "rollup": "^4.40.0"
     },
     "prettier": {
         "tabWidth": 4,
