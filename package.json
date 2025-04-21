@@ -20,7 +20,8 @@
         "@types/jsdom": "^21.1.7",
         "@types/jsdom-global": "^3.0.7",
         "@types/mime-types": "^2.1.4",
-        "prettier": "^3.5.3"
+        "prettier": "^3.5.3",
+        "rimraf": "^6.0.1"
     },
     "prettier": {
         "tabWidth": 4,
