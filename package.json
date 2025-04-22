@@ -5,6 +5,7 @@
         "clean": "rimraf dist",
         "run": "node dist/index.js",
         "build": "node build.js",
+        "build-types": "tsc src/index.ts --declaration -emitDeclarationOnly --module commonjs --esModuleInterop true --allowSyntheticDefaultImports true --outFile dist/index.d.ts",
         "prettier": "npx prettier --write .",
         "start": "npm run clean && npm run build && npm run run"
     },
