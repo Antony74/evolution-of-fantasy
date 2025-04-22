@@ -4,7 +4,7 @@
     "scripts": {
         "clean": "rimraf dist",
         "run": "node dist/index.js",
-        "build": "rollup --config",
+        "build": "node build.js",
         "prettier": "npx prettier --write .",
         "start": "npm run clean && npm run build && npm run run"
     },
@@ -13,22 +13,19 @@
     "dependencies": {
         "@maxgraph/core": "^0.16.0",
         "@resvg/resvg-js": "^2.6.2",
+        "esbuild": "^0.25.2",
         "jsdom": "^26.1.0",
         "jsdom-global": "^3.0.2",
         "mime-types": "^3.0.1",
         "sharp": "^0.34.1"
     },
     "devDependencies": {
-        "@rollup/plugin-node-resolve": "^16.0.1",
-        "@rollup/plugin-typescript": "^12.1.2",
         "@types/jsdom": "^21.1.7",
         "@types/jsdom-global": "^3.0.7",
         "@types/mime-types": "^2.1.4",
         "prettier": "^3.5.3",
         "rimraf": "^6.0.1",
-        "rollup": "^4.40.0",
-        "tslib": "^2.8.1",
-        "typescript": "^5.8.3"
+        "rollup": "^4.40.0"
     },
     "prettier": {
         "tabWidth": 4,
