@@ -9,13 +9,7 @@ module.exports = {
     },
     plugins: [
         resolve({ extensions: ['.ts', '.js'] }),
-        typescript({
-            compilerOptions: {
-                module: 'esnext',
-                esModuleInterop: true,
-                allowSyntheticDefaultImports: true,
-            },
-        }),
+        typescript({ compilerOptions: { module: 'esnext' } }),
     ],
     external: [
         'fs/promises',
@@ -24,9 +18,4 @@ module.exports = {
         'sharp',
         'mime-types',
     ],
-    onwarn(warning, warn) {
-        if (warning.code !== 'THIS_IS_UNDEFINED' && warning.code !== 'EVAL') {
-            warn(warning);
-        }
-    },
 };
