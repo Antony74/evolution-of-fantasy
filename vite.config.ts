@@ -1,7 +1,8 @@
 import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { UserConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-export default defineConfig({
+const config: UserConfig = {
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
@@ -31,4 +32,7 @@ export default defineConfig({
         minify: false,
         sourcemap: true,
     },
-});
+    plugins: [dts({ rollupTypes: true })],
+};
+
+export default config;
