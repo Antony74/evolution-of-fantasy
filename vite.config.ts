@@ -1,11 +1,10 @@
-import { resolve } from 'path';
 import { UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 const config: UserConfig = {
     build: {
         lib: {
-            entry: resolve(__dirname, 'src/index.ts'),
+            entry: 'src/index.ts',
             name: 'EvolutionOfFantasy',
             fileName: 'index',
             formats: ['cjs'],
