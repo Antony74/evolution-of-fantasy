@@ -2,7 +2,7 @@
     "name": "evolution-of-fantasy",
     "version": "1.0.0",
     "scripts": {
-        "prettier": "npx prettier --write .",
+        "prettier": "npx prettier --write ./src",
         "start": "ts-node src/index.ts"
     },
     "author": "Antony74",
