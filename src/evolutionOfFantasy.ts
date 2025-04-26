@@ -1,4 +1,4 @@
-import { CellStyle, Graph, VertexParameters } from '@maxgraph/core';
+import { CellStyle, Graph, VertexParameters } from 'maxgraph-core-commonjs';
 
 import { below, centerCoords, VertexParametersWithSize } from './utils';
 

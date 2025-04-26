@@ -2,32 +2,26 @@
     "name": "evolution-of-fantasy",
     "version": "1.0.0",
     "scripts": {
-        "clean": "rimraf dist",
-        "run": "node dist/index.js",
-        "build": "vite build",
-        "build-types": "tsc src/index.ts --declaration -emitDeclarationOnly --module commonjs --esModuleInterop true --allowSyntheticDefaultImports true --outFile dist/index.d.ts",
         "prettier": "npx prettier --write .",
-        "start": "npm run clean && npm run build && npm run run"
+        "start": "ts-node src/index.ts"
     },
     "author": "Antony74",
     "license": "MIT",
     "dependencies": {
-        "@maxgraph/core": "^0.16.0",
         "@resvg/resvg-js": "^2.6.2",
         "jsdom": "^26.1.0",
         "jsdom-global": "^3.0.2",
+        "maxgraph-core-commonjs": "github:Antony74/maxgraph-core-commonjs#build",
         "mime-types": "^3.0.1",
-        "sharp": "^0.34.1"
+        "sharp": "^0.34.1",
+        "ts-node": "^10.9.2"
     },
     "devDependencies": {
         "@types/jsdom": "^21.1.7",
         "@types/jsdom-global": "^3.0.7",
         "@types/mime-types": "^2.1.4",
         "prettier": "^3.5.3",
-        "rimraf": "^6.0.1",
-        "typescript": "^5.8.3",
-        "vite": "^6.3.2",
-        "vite-plugin-dts": "^4.5.3"
+        "typescript": "^5.8.3"
     },
     "prettier": {
         "tabWidth": 4,

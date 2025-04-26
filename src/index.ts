@@ -1,11 +1,11 @@
 import fsp from 'fs/promises';
 
 import jsdomGlobal from 'jsdom-global';
-
-import { maxGraphToSvg } from './maxGraphToSvg';
-import { createEvolutionOfFantasyGraph } from './evolutionOfFantasy';
+import { maxGraphToSvg } from 'maxgraph-core-commonjs';
 import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
+
+import { createEvolutionOfFantasyGraph } from './evolutionOfFantasy';
 
 const main = async () => {
     jsdomGlobal(`<!DOCTYPE html><div id="graph-container"></div>`);
