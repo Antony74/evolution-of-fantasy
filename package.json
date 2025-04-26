@@ -8,6 +8,7 @@
     "author": "Antony74",
     "license": "MIT",
     "dependencies": {
+        "github-fork-ribbon-css": "^0.2.3",
         "http-server": "^14.1.1",
         "maxgraph-core-commonjs": "github:Antony74/maxgraph-core-commonjs#build",
         "parcel": "^2.14.4",
