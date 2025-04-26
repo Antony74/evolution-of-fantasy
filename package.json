@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "scripts": {
         "prettier": "npx prettier --write .",
-        "start": "rimraf dist && parcel build src/index.html && http-server dist"
+        "start": "rimraf dist && parcel build src/index.html --public-url /evolution-of-fantasy/dist && http-server .."
     },
     "author": "Antony74",
     "license": "MIT",
