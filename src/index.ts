@@ -12,12 +12,7 @@ const height = 600;
 
 InternalEvent.disableContextMenu(container);
 
-const graph = createEvolutionOfFantasyGraph(
-    container,
-    width,
-    height,
-    '',
-);
+const graph = createEvolutionOfFantasyGraph(container, width, height, '');
 
 const button = document.getElementById('download-button');
 
@@ -26,7 +21,7 @@ if (!button) {
 }
 
 button.addEventListener('click', async () => {
-    const xml = await maxGraphToSvg(graph);
+    const xml = await maxGraphToSvg(graph, { inlineImages: true });
 
     const blob = new Blob([xml], {
         type: 'image/svg+xml',
