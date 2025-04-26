@@ -1,4 +1,5 @@
 import { CellStyle, Graph, VertexParameters } from 'maxgraph-core-commonjs';
+import urlJoin from 'url-join';
 
 import { below, centerCoords, VertexParametersWithSize } from './utils';
 
@@ -41,7 +42,7 @@ export const createEvolutionOfFantasyGraph = (
             ...vertexCommon,
             position: [xCenter, top],
             style: {
-                image: `${imageLocation}/TheKingOfElflandsDaughter.jpg`,
+                image: urlJoin(imageLocation, 'TheKingOfElflandsDaughter.jpg'),
                 shape: 'image',
             },
         });
@@ -50,7 +51,7 @@ export const createEvolutionOfFantasyGraph = (
             ...vertexCommon,
             position: [left, yCenter + 20],
             style: {
-                image: `${imageLocation}/The_Lord_of_the_Rings.gif`,
+                image: urlJoin(imageLocation, 'The_Lord_of_the_Rings.gif'),
                 shape: 'image',
             },
         });
@@ -60,7 +61,7 @@ export const createEvolutionOfFantasyGraph = (
             position: [right, yCenter + 10],
             size: [vertexHeight, vertexHeight * 0.65],
             style: {
-                image: `${imageLocation}/TheShadowKingdom-1.png`,
+                image: urlJoin(imageLocation, 'TheShadowKingdom-1.png'),
                 shape: 'image',
                 imageBorder: 'black',
             },
@@ -71,7 +72,7 @@ export const createEvolutionOfFantasyGraph = (
             position: [xCenter, bottom],
             size: [0.6 * vertexHeight, vertexHeight],
             style: {
-                image: `${imageLocation}/The_Black_Company.jpg`,
+                image: urlJoin(imageLocation, 'The_Black_Company.jpg'),
                 shape: 'image',
             },
         });

@@ -13,7 +13,8 @@
         "maxgraph-core-commonjs": "github:Antony74/maxgraph-core-commonjs#build",
         "parcel": "^2.14.4",
         "prettier": "^3.5.3",
-        "rimraf": "^6.0.1"
+        "rimraf": "^6.0.1",
+        "url-join": "^5.0.0"
     },
     "devDependencies": {
         "buffer": "^6.0.3",
