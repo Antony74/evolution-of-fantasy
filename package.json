@@ -9,13 +9,19 @@
     "license": "MIT",
     "dependencies": {
         "@maxgraph/core": "^0.16.0",
-        "@prettier/plugin-xml": "^3.4.1",
         "http-server": "^14.1.1",
+        "maxgraph-core-commonjs": "github:Antony74/maxgraph-core-commonjs#build",
         "parcel": "^2.14.4",
         "prettier": "^3.5.3",
         "rimraf": "^6.0.1"
     },
     "devDependencies": {
-        "parcel-reporter-static-files-copy": "^1.5.3"
+        "parcel-reporter-static-files-copy": "^1.5.3",
+        "path-browserify": "^1.0.1",
+        "process": "^0.11.10"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": true
     }
 }
