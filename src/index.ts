@@ -12,7 +12,12 @@ const height = 600;
 
 InternalEvent.disableContextMenu(container);
 
-const graph = createEvolutionOfFantasyGraph(container, width, height, '/dist/');
+const graph = createEvolutionOfFantasyGraph(
+    container,
+    width,
+    height,
+    '/evolution-of-fantasy/dist/',
+);
 
 const button = document.getElementById('download-button');
 
