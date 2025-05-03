@@ -1,0 +1,35 @@
+digraph fantasy_influences {
+    rankdir=LR;
+    node [shape=box, style=filled, fillcolor=lightyellow];
+
+    // Nodes
+    KingArthur [label="King Arthur\n(trad.)"];
+    Dunsany [label="Lord Dunsany"];
+    Howard [label="Robert E. Howard\n(The Shadow Kingdom)"];
+    Tolkien [label="J.R.R. Tolkien\n(The Lord of the Rings)"];
+    Cook [label="Glen Cook\n(The Black Company)"];
+    Anderson [label="Poul Anderson\n(The Broken Sword)"];
+    Moorcock [label="Moorcock\n(Elric Novels)"];
+    Cherryh [label="C.J. Cherryh\n(Morgaine Trilogy)"];
+    LeGuin [label="Ursula K. Le Guin\n(Earthsea)"];
+    Narnia [label="C.S. Lewis\n(Narnia)"];
+    Norton [label="Andre Norton\n(Witch World)"];
+
+    // Influence Edges
+    KingArthur -> Dunsany;
+    Dunsany -> Tolkien;
+    Dunsany -> Howard;
+    Tolkien -> Cook;
+    Howard -> Cook;
+    Anderson -> Moorcock;
+    Anderson -> Cherryh [penwidth=3]; // bold
+    Tolkien -> Cherryh [color=gray];  // lighter
+    Anderson -> LeGuin [color=gray];  // lighter
+    Tolkien -> LeGuin [penwidth=3];   // bold
+    KingArthur -> Narnia;
+    Dunsany -> Narnia;
+    Tolkien -> Narnia [style=dotted];
+    Tolkien -> Norton [color=gray];   // lighter
+    KingArthur -> Norton [penwidth=3]; // darker
+    Howard -> Moorcock
+}

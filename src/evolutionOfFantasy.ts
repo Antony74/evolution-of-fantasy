@@ -1,12 +1,18 @@
-import { CellStyle, Graph, VertexParameters } from 'maxgraph-core-commonjs';
+import {
+    CellStyle,
+    EdgeStyle,
+    Graph,
+    HierarchicalLayout,
+    VertexParameters,
+} from 'maxgraph-core-commonjs';
 
-import { below, centerCoords, VertexParametersWithSize } from './utils';
+import { centerCoords, VertexParametersWithSize } from './utils';
 
 export const createEvolutionOfFantasyGraph = (
     container: HTMLElement,
     width: number,
     height: number,
-    imageLocation: string,
+    _imageLocation: string,
 ): Graph => {
     container.style.width = `${width}`;
     container.style.height = `${height}`;
@@ -35,157 +41,97 @@ export const createEvolutionOfFantasyGraph = (
         const vertexCommon: VertexParametersWithSize = {
             parent,
             size: [vertexWidth, vertexHeight],
-        };
-
-        const aParams = centerCoords({
-            ...vertexCommon,
-            position: [xCenter, top],
             style: {
-                image: `${imageLocation}/TheKingOfElflandsDaughter.jpg`,
-                shape: 'image',
-            },
-        });
-
-        const bParams = centerCoords({
-            ...vertexCommon,
-            position: [left, yCenter + 20],
-            style: {
-                image: `${imageLocation}/The_Lord_of_the_Rings.gif`,
-                shape: 'image',
-            },
-        });
-
-        const cParams = centerCoords({
-            ...vertexCommon,
-            position: [right, yCenter + 10],
-            size: [vertexHeight, vertexHeight * 0.65],
-            style: {
-                image: `${imageLocation}/TheShadowKingdom-1.png`,
-                shape: 'image',
-                imageBorder: 'black',
-            },
-        });
-
-        const dParams = centerCoords({
-            ...vertexCommon,
-            position: [xCenter, bottom],
-            size: [0.6 * vertexHeight, vertexHeight],
-            style: {
-                image: `${imageLocation}/The_Black_Company.jpg`,
-                shape: 'image',
-            },
-        });
-
-        const a = graph.insertVertex(aParams);
-        const b = graph.insertVertex(bParams);
-        const c = graph.insertVertex(cParams);
-        const d = graph.insertVertex(dParams);
-
-        const labelVertexCommon: VertexParameters = {
-            parent,
-            size: [vertexWidth, labelHeight],
-            style: {
-                fillOpacity: 0,
-                strokeOpacity: 0,
-                fontColor: 'black',
-                verticalAlign: 'top',
-                fontSize: 14,
+                shape: 'ellipse',
+                fillColor: 'none',
+                strokeColor: 'black',
             },
         };
 
-        graph.insertVertex({
-            ...labelVertexCommon,
-            value: [`Lord Dunsany, 1924.`].join('\n'),
-            position: below(aParams),
-        });
+        const a = graph.insertVertex(
+            centerCoords({
+                ...vertexCommon,
+                position: [xCenter, top],
+                value: `Lord Dunsany`,
+            }),
+        );
 
-        const bLabel = graph.insertVertex({
-            ...labelVertexCommon,
-            value: [
-                `JRR Tolkien, 1954-5.`,
-                `Became known as`,
-                `High Fantasy.`,
-            ].join('\n'),
-            position: below(bParams),
-        });
+        const b = graph.insertVertex(
+            centerCoords({
+                ...vertexCommon,
+                position: [left, yCenter + 20],
+                value: `JRR Tolkien`,
+            }),
+        );
 
-        const cLabel = graph.insertVertex({
-            ...labelVertexCommon,
-            size: [vertexHeight, labelHeight],
-            value: [
-                `Robert E Howard, 1929.`,
-                `Became known as`,
-                `Sword and Sorcery.`,
-            ].join('\n'),
-            position: below(cParams),
-        });
+        const c = graph.insertVertex(
+            centerCoords({
+                ...vertexCommon,
+                position: [right, yCenter + 10],
+                size: [vertexHeight, vertexHeight * 0.65],
+                value: `Robert E Howard`,
+            }),
+        );
 
-        graph.insertVertex({
-            ...labelVertexCommon,
-            value: [`Glen Cook, 1984.`, `Became known`, `as Grimdark.`].join(
-                '\n',
-            ),
-            position: below(dParams),
-        });
+        const d = graph.insertVertex(
+            centerCoords({
+                ...vertexCommon,
+                position: [xCenter, bottom],
+                size: [0.6 * vertexHeight, vertexHeight],
+                value: `Glen Cook`,
+            }),
+        );
 
-        const edgeStyle: CellStyle = {
-            edgeStyle: 'orthogonalEdgeStyle',
-            rounded: true,
-            strokeWidth: 10,
-            strokeColor: 'black',
-            arcSize: 50,
-            endArrow: 'block',
-        };
+        const edgeStyle = graph.getStylesheet().getDefaultEdgeStyle();
+        edgeStyle.strokeColor = 'black';
 
-        const north = 'north' as any;
-        const east = 'east' as any;
-        const south = 'south' as any;
-        const west = 'west' as any;
+        // const edgeStyle: CellStyle = {};
+        //     edgeStyle: null,
+        //     strokeColor: 'black',
+        //     endArrow: 'block',
+        //     curved: false,
+        //     segment: 1,
+        // };
+
+        // edgeStyle['edgeStyle'] = EdgeStyle.ElbowConnector; // or null for straight
+        // edgeStyle['shape'] = 'connector';
+        // edgeStyle['endArrow'] = 'classic';
+        // edgeStyle['strokeColor'] = '#000000';
+        // edgeStyle['rounded'] = false;
+        // edgeStyle['exitX'] = 0.5; // Ensures edge exits center horizontally
+        // edgeStyle['exitY'] = 1.0; // Exits at bottom
+        // edgeStyle['exitPerimeter'] = true;
+        // edgeStyle['entryX'] = 0.5; // Enters at top center
+        // edgeStyle['entryY'] = 0;
+        // edgeStyle['entryPerimeter'] = true;
 
         graph.insertEdge({
             parent,
             source: a,
             target: b,
-            style: {
-                ...edgeStyle,
-                sourcePortConstraint: west,
-                targetPortConstraint: north,
-            },
         });
 
         graph.insertEdge({
             parent,
             source: a,
             target: c,
-            style: {
-                ...edgeStyle,
-                sourcePortConstraint: east,
-                targetPortConstraint: north,
-            },
         });
 
         graph.insertEdge({
             parent,
-            source: bLabel,
+            source: b,
             target: d,
-            style: {
-                ...edgeStyle,
-                sourcePortConstraint: south,
-                targetPortConstraint: west,
-            },
         });
 
         graph.insertEdge({
             parent,
-            source: cLabel,
+            source: c,
             target: d,
-            style: {
-                ...edgeStyle,
-                sourcePortConstraint: south,
-                targetPortConstraint: east,
-            },
         });
     });
+
+    const layout = new HierarchicalLayout(graph);
+    layout.execute(graph.getDefaultParent());
 
     return graph;
 };
