@@ -26,8 +26,13 @@ export const createEvolutionOfFantasyGraph = (
 
         const vertexStyle = graph.getStylesheet().getDefaultVertexStyle();
         vertexStyle.shape = 'ellipse';
+        vertexStyle.strokeColor = 'black';
+        vertexStyle.fillColor = 'none';
+        vertexStyle.fontColor = 'black';
 
         const edgeStyle = graph.getStylesheet().getDefaultEdgeStyle();
+        edgeStyle.strokeColor = 'black';
+
         console.log(JSON.stringify({ vertexStyle, edgeStyle }, null, 4));
 
         const a = insertVertex(`Lord Dunsany`);
