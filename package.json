@@ -10,7 +10,7 @@
     "dependencies": {
         "github-fork-ribbon-css": "^0.2.3",
         "http-server": "^14.1.1",
-        "maxgraph-core-commonjs": "github:Antony74/maxgraph-core-commonjs#build",
+        "maxgraph-core-commonjs": "^0.19.0",
         "parcel": "^2.14.4",
         "prettier": "^3.5.3",
         "rimraf": "^6.0.1",
