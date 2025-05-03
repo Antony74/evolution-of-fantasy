@@ -2,3 +2,5 @@ node_modules
 temp.png
 .parcel-cache
 dist
+*.png
+*.svg
