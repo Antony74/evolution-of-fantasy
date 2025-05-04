@@ -18,6 +18,7 @@ const approximateGraphVizDefaultStyle = (stylesheet: Stylesheet) => {
 
     stylesheet.putDefaultEdgeStyle({
         strokeColor: 'black',
+        endArrow: 'classic',
     });
 };
 
@@ -32,7 +33,7 @@ export const createEvolutionOfFantasyGraph = (
 
     const graph = new Graph(container);
 
-    const size: Vec2 = [90, 90];
+    const size: Vec2 = [130, 100];
 
     graph.batchUpdate(() => {
         approximateGraphVizDefaultStyle(graph.getStylesheet());
@@ -49,19 +50,50 @@ export const createEvolutionOfFantasyGraph = (
             return graph.insertEdge({ source, target });
         };
 
-        const [dunsany, tolkien, howard, cook] = [
-            `Lord Dunsany`,
-            `JRR Tolkien`,
-            `Robert E Howard`,
-            `Glen Cook`,
+        const [
+            KingArthur,
+            Dunsany,
+            Howard,
+            Tolkien,
+            Cook,
+            Anderson,
+            Moorcock,
+            Cherryh,
+            LeGuin,
+            Narnia,
+            Norton,
+        ] = [
+            'King Arthur\n(trad.)',
+            'Lord Dunsany',
+            'Robert E. Howard\n(The Shadow Kingdom)',
+            'J.R.R. Tolkien\n(The Lord of the Rings)',
+            'Glen Cook\n(The Black Company)',
+            'Poul Anderson\n(The Broken Sword)',
+            'Moorcock\n(Elric Novels)',
+            'C.J. Cherryh\n(Morgaine Trilogy)',
+            'Ursula K. Le Guin\n(Earthsea)',
+            'C.S. Lewis\n(Narnia)',
+            'Andre Norton\n(Witch World)',
         ].map(insertVertex);
 
         const insertEdges = () => {
             const edges: [Cell, Cell][] = [
-                [dunsany, tolkien],
-                [dunsany, howard],
-                [tolkien, cook],
-                [howard, cook],
+                [KingArthur, Dunsany],
+                [Dunsany, Tolkien],
+                [Dunsany, Howard],
+                [Tolkien, Cook],
+                [Howard, Cook],
+                [Anderson, Moorcock],
+                [Anderson, Cherryh], // [penwidth=3]; // bold
+                [Tolkien, Cherryh], // [color=gray];  // lighter
+                [Anderson, LeGuin], // [color=gray];  // lighter
+                [Tolkien, LeGuin], // [penwidth=3];   // bold
+                [KingArthur, Narnia],
+                [Dunsany, Narnia],
+                [Tolkien, Narnia], // [style=dotted];
+                [Tolkien, Norton], // [color=gray];   // lighter
+                [KingArthur, Norton], // [penwidth=3]; // darker
+                [Howard, Moorcock],
             ];
 
             edges.map(insertEdge);
