@@ -21,11 +21,10 @@ export const createEvolutionOfFantasyGraph = (
     const size: Vec2 = [90, 90];
 
     graph.batchUpdate(() => {
-        const insertVertex = (value: string, x: number, y: number) => {
+        const insertVertex = (value: string) => {
             const vertex = graph.insertVertex({
                 value,
                 size,
-                position: [x, y],
             });
             return vertex;
         };
@@ -43,24 +42,29 @@ export const createEvolutionOfFantasyGraph = (
 
         const edgeStyle = graph.getStylesheet().getDefaultEdgeStyle();
         edgeStyle.strokeColor = 'black';
-        edgeStyle.align = undefined;
-        edgeStyle.fontColor = undefined;
-        edgeStyle.verticalAlign = undefined;
 
-        console.log(JSON.stringify({ vertexStyle, edgeStyle }, null, 4));
+        const [a, b, c, d] = [
+            `Lord Dunsany`,
+            `JRR Tolkien`,
+            `Robert E Howard`,
+            `Glen Cook`,
+        ].map(insertVertex);
 
-        const a = insertVertex(`Lord Dunsany`, 60, 0);
-        const b = insertVertex(`JRR Tolkien`, 120, 190);
-        const c = insertVertex(`Robert E Howard`, 0, 190);
-        const d = insertVertex(`Glen Cook`, 60, 380);
+        const insertEdges = () => {
+            insertEdge(a, b);
+            insertEdge(a, c);
+            insertEdge(b, d);
+            insertEdge(c, d);
+        };
 
-        insertEdge(a, b);
-        insertEdge(a, c);
-        insertEdge(b, d);
-        insertEdge(c, d);
+        insertEdges();
 
-        // const layout = new HierarchicalLayout(graph);
-        // layout.execute(graph.getDefaultParent());
+        const layout = new HierarchicalLayout(graph);
+        layout.execute(graph.getDefaultParent());
+
+        // That's done something to my edges, replace them.
+        graph.removeCells(graph.getChildEdges(graph.defaultParent!));
+        insertEdges();
 
         // vertices.forEach(vertex => console.log(vertex.geometry?.getPoint()))
     });
