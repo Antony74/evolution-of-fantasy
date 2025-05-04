@@ -2,10 +2,24 @@ import {
     Cell,
     Graph,
     HierarchicalLayout,
-    RadialTreeLayout,
+    Stylesheet,
 } from 'maxgraph-core-commonjs';
 
 import { Vec2 } from './utils';
+
+const approximateGraphVizDefaultStyle = (stylesheet: Stylesheet) => {
+    stylesheet.putDefaultVertexStyle({
+        shape: 'ellipse',
+        perimeter: 'ellipsePerimeter',
+        strokeColor: 'black',
+        fillColor: 'none',
+        fontColor: 'black',
+    });
+
+    stylesheet.putDefaultEdgeStyle({
+        strokeColor: 'black',
+    });
+};
 
 export const createEvolutionOfFantasyGraph = (
     container: HTMLElement,
@@ -21,6 +35,8 @@ export const createEvolutionOfFantasyGraph = (
     const size: Vec2 = [90, 90];
 
     graph.batchUpdate(() => {
+        approximateGraphVizDefaultStyle(graph.getStylesheet());
+
         const insertVertex = (value: string) => {
             const vertex = graph.insertVertex({
                 value,
@@ -29,21 +45,11 @@ export const createEvolutionOfFantasyGraph = (
             return vertex;
         };
 
-        const insertEdge = (source: Cell, target: Cell) => {
+        const insertEdge = ([source, target]: [Cell, Cell]) => {
             return graph.insertEdge({ source, target });
         };
 
-        const vertexStyle = graph.getStylesheet().getDefaultVertexStyle();
-        vertexStyle.shape = 'ellipse';
-        vertexStyle.perimeter = 'ellipsePerimeter';
-        vertexStyle.strokeColor = 'black';
-        vertexStyle.fillColor = 'none';
-        vertexStyle.fontColor = 'black';
-
-        const edgeStyle = graph.getStylesheet().getDefaultEdgeStyle();
-        edgeStyle.strokeColor = 'black';
-
-        const [a, b, c, d] = [
+        const [dunsany, tolkien, howard, cook] = [
             `Lord Dunsany`,
             `JRR Tolkien`,
             `Robert E Howard`,
@@ -51,10 +57,14 @@ export const createEvolutionOfFantasyGraph = (
         ].map(insertVertex);
 
         const insertEdges = () => {
-            insertEdge(a, b);
-            insertEdge(a, c);
-            insertEdge(b, d);
-            insertEdge(c, d);
+            const edges: [Cell, Cell][] = [
+                [dunsany, tolkien],
+                [dunsany, howard],
+                [tolkien, cook],
+                [howard, cook],
+            ];
+
+            edges.map(insertEdge);
         };
 
         insertEdges();
@@ -62,11 +72,9 @@ export const createEvolutionOfFantasyGraph = (
         const layout = new HierarchicalLayout(graph);
         layout.execute(graph.getDefaultParent());
 
-        // That's done something to my edges, replace them.
+        // That layout has done something to my edges!  Replace them.
         graph.removeCells(graph.getChildEdges(graph.defaultParent!));
         insertEdges();
-
-        // vertices.forEach(vertex => console.log(vertex.geometry?.getPoint()))
     });
 
     return graph;
