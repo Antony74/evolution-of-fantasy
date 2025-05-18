@@ -2,8 +2,8 @@ import fsp from 'fs/promises';
 
 import jsdomGlobal from 'jsdom-global';
 import { maxGraphToSvg } from 'maxgraph-core-commonjs';
+import { Rectangle } from '@maxgraph/core';
 import { Resvg } from '@resvg/resvg-js';
-import sharp from 'sharp';
 
 import { createEvolutionOfFantasyGraph } from './evolutionOfFantasy';
 
@@ -27,6 +27,25 @@ const main = async () => {
         height,
         imageLocation,
     );
+
+    const svg = container.firstElementChild!;
+
+    const margin = 20;
+    const graphBounds = graph.getGraphBounds();
+    const bounds = new Rectangle(
+        graphBounds.x - margin,
+        graphBounds.y - margin,
+        graphBounds.width + 2 * margin,
+        graphBounds.height + 2 * margin,
+    );
+
+    svg.setAttribute(`width`, `${bounds.width}`);
+    svg.setAttribute('height', `${bounds.height}`);
+    svg.setAttribute(
+        `viewBox`,
+        `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`,
+    );
+
     const xml = await maxGraphToSvg(graph as any, { inlineImages: true });
     await fsp.writeFile('evolution-of-fantasy.svg', xml);
 
@@ -34,17 +53,7 @@ const main = async () => {
         background: '#ffffff',
     });
     const pngData = resvg.render().asPng();
-    await fsp.writeFile(`temp.png`, pngData);
-
-    await sharp(`temp.png`)
-        .extend({
-            left: 0,
-            top: 0,
-            right: 10,
-            bottom: 10,
-            background: { r: 255, g: 255, b: 255, alpha: 1 },
-        })
-        .toFile(`evolution-of-fantasy.png`);
+    await fsp.writeFile(`evolution-of-fantasy.png`, pngData);
 };
 
 main();
