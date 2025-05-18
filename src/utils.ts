@@ -1,4 +1,4 @@
-import { VertexParameters } from 'maxgraph-core-commonjs';
+import { VertexParameters } from '@maxgraph/core';
 
 export type Vec2 = [number, number];
 

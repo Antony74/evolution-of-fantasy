@@ -27,7 +27,7 @@ const main = async () => {
         height,
         imageLocation,
     );
-    const xml = await maxGraphToSvg(graph, { inlineImages: true });
+    const xml = await maxGraphToSvg(graph as any, { inlineImages: true });
     await fsp.writeFile('evolution-of-fantasy.svg', xml);
 
     const resvg = new Resvg(xml, {
