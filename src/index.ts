@@ -1,5 +1,6 @@
-import { InternalEvent, maxGraphToSvg } from 'maxgraph-core-commonjs';
+import { InternalEvent } from '@maxgraph/core';
 import { createEvolutionOfFantasyGraph } from './evolutionOfFantasy';
+import { svgElementInlineImages } from 'svg-inline-images';
 
 const container = document.getElementById('graph-container');
 
@@ -26,7 +27,7 @@ if (!button) {
 }
 
 button.addEventListener('click', async () => {
-    const xml = await maxGraphToSvg(graph, { inlineImages: true });
+    const xml = await svgElementInlineImages(graph.container.firstElementChild!, fetch);
 
     const blob = new Blob([xml], {
         type: 'image/svg+xml',

@@ -1,4 +1,4 @@
-import { CellStyle, Graph, VertexParameters } from 'maxgraph-core-commonjs';
+import { CellStyle, Graph, VertexParameters } from '@maxgraph/core';
 import urlJoin from 'url-join';
 
 import { below, centerCoords, VertexParametersWithSize } from './utils';
