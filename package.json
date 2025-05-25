@@ -14,7 +14,7 @@
         "parcel": "^2.14.4",
         "prettier": "^3.5.3",
         "rimraf": "^6.0.1",
-        "svg-inline-images": "github:Antony74/svg-inline-images#build",
+        "svg-inline-images": "^1.0.0",
         "url-join": "^5.0.0"
     },
     "devDependencies": {
