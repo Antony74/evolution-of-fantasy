@@ -10,12 +10,12 @@
     "dependencies": {
         "@maxgraph/core": "^0.20.0",
         "@resvg/resvg-js": "^2.6.2",
-        "jsdom": "^26.1.0",
+        "jsdom": "^29.1.1",
         "jsdom-global": "^3.0.2",
         "svg-inline-images": "^1.0.0"
     },
     "devDependencies": {
-        "@types/jsdom": "^21.1.7",
+        "@types/jsdom": "^28.0.3",
         "@types/jsdom-global": "^3.0.7",
         "@types/node": "^22.15.18",
         "prettier": "^3.5.3",
