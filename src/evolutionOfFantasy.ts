@@ -137,10 +137,10 @@ export const createEvolutionOfFantasyGraph = (
             endArrow: 'block',
         };
 
-        const north = 'north' as any;
-        const east = 'east' as any;
-        const south = 'south' as any;
-        const west = 'west' as any;
+        const north = 'north';
+        const east = 'east';
+        const south = 'south';
+        const west = 'west';
 
         graph.insertEdge({
             parent,
